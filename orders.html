@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Orders | WholeMart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-container">
+        <div class="logo-container">
+          <a href="index.html" class="logo-link">
+            <img
+              src="logo_2.jpeg"
+              alt="WholeMart Logo"
+              class="logo"
+              loading="lazy"
+              width="50"
+              height="50"
+              decoding="async"
+            />
+            <h1 class="brand-name">WholeMart</h1>
+          </a>
+        </div>
+        <nav class="navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button
+            type="button"
+            class="auth-btn"
+            id="auth-btn"
+            onclick="openAuthModal('login')"
+          >
+            Login / Register
+          </button>
+          <button type="button" class="cart-button" onclick="openCart()">
+            🛒 <span id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="orders">
+        <div class="container">
+          <h2>Your Orders</h2>
+          <div id="order-list" role="region" aria-live="polite">
+            <p>No orders placed yet.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 WholeMart. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

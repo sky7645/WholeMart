@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | WholeMart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-container">
+        <div class="logo-container">
+          <a href="index.html" class="logo-link">
+            <img
+              src="logo_2.jpeg"
+              alt="WholeMart Logo"
+              class="logo"
+              loading="lazy"
+              width="50"
+              height="50"
+              decoding="async"
+            <!-- Confirmation modal -->
+            <div id="contact-modal" class="modal" aria-hidden="true">
+              <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                <button class="modal-close" aria-label="Close" onclick="closeContactModal()">×</button>
+                <div class="modal-body">
+                  <h4 id="modal-title">Message sent</h4>
+                  <p>Thank you. Your message has been received. Our support team will contact you within 24 hours.</p>
+                </div>
+              </div>
+            </div>
+
+            <script>
+              function openContactModal(){
+                const m = document.getElementById('contact-modal');
+                if(!m) return;
+                m.classList.add('open');
+                m.setAttribute('aria-hidden', 'false');
+              }
+              function closeContactModal(){
+                const m = document.getElementById('contact-modal');
+                if(!m) return;
+                m.classList.remove('open');
+                m.setAttribute('aria-hidden', 'true');
+              }
+
+              function handleContactSubmit(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const subject = document.getElementById('subject').value.trim();
+                const message = document.getElementById('message').value.trim();
+
+                if (!name) { alert('Please enter your full name.'); return false; }
+                if (!isValidEmail(email)) { alert('Please enter a valid email address.'); return false; }
+                if (phone && !isValidPhone(phone)) { alert('Please enter a valid phone number.'); return false; }
+
+                // Simulate send: show confirmation modal and reset form
+                try{
+                  openContactModal();
+                  // Optionally persist the message locally for review (not sent to server)
+                  const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+                  submissions.unshift({ name, email, phone, subject, message, date: new Date().toISOString() });
+                  localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+                  document.getElementById('contact-form').reset();
+
+                  // Auto-close modal after 4 seconds
+                  setTimeout(() => closeContactModal(), 4000);
+                } catch (err){
+                  console.error('Contact submit error', err);
+                  alert('An error occurred. Please try again later or email support@wholemart.com');
+                }
+
+                return false;
+              }
+            </script>
+            🛒 <span id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="contact">
+        <div class="container">
+          <h2>Contact Us</h2>
+
+          <div class="contact-grid">
+            <div class="contact-methods">
+              <h3>How to reach us</h3>
+              <ul>
+                <li>
+                  <strong>Email:</strong>
+                  <a href="mailto:support@wholemart.com"
+                    >support@wholemart.com</a
+                  >
+                </li>
+                <li>
+                  <strong>Phone:</strong>
+                  <a href="tel:+919876543210">+91-9876543210</a> (Mon–Fri,
+                  9:00–18:00 IST)
+                </li>
+                <li>
+                  <strong>Live chat:</strong>
+                  <a href="#" onclick="alert('Live chat coming soon')"
+                    >Start chat</a
+                  >
+                </li>
+                <li>
+                  <strong>Support portal:</strong>
+                  <a href="#">Submit a ticket</a>
+                </li>
+                <li>
+                  <strong>Business enquiries:</strong>
+                  <a href="mailto:business@wholemart.com"
+                    >business@wholemart.com</a
+                  >
+                </li>
+              </ul>
+
+              <h4>Quick links</h4>
+              <ul>
+                <li><a href="#faq">Frequently Asked Questions</a></li>
+                <li><a href="orders.html">Track an order</a></li>
+                <li><a href="#contact-form">Send a message</a></li>
+              </ul>
+            </div>
+
+            <div class="contact-form-wrapper">
+              <h3>Send us a message</h3>
+              <form
+                id="contact-form"
+                onsubmit="return handleContactSubmit(event);"
+              >
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" required />
+
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" required />
+
+                <label for="phone">Phone (optional)</label>
+                <input id="phone" name="phone" type="tel" />
+
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject">
+                  <option>Order issue</option>
+                  <option>Returns & Refunds</option>
+                  <option>Shipping</option>
+                  <option>Invoice / Billing</option>
+                  <option>Product inquiry</option>
+                  <option>General feedback</option>
+                </select>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="8">
+Hello WholeMart Support Team,
+
+I am contacting you regarding [brief description of the issue]. My order/reference number is [ORDER or REF NO.].
+
+Details:
+- Item / service: [name]
+- Date / approximate time: [date/time]
+- Issue observed: [clear, concise description]
+
+I would appreciate your assistance to [desired outcome — e.g., refund, replacement, clarification]. Please let me know if you need any further information.
+
+Thank you for your prompt help.
+
+Kind regards,
+[Your full name]
+[Company name — optional]
+[Phone — optional]
+</textarea
+                >
+
+                <div class="form-actions">
+                  <button type="submit" class="primary-btn">
+                    Send message
+                  </button>
+                  <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="document.getElementById('contact-form').reset()"
+                  >
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div id="faq" class="faq">
+            <h3>Frequently Asked Questions</h3>
+            <details>
+              <summary>How long does delivery take?</summary>
+              <p>
+                Standard delivery is 3–7 business days depending on your
+                location. Expedited options are available at checkout.
+              </p>
+            </details>
+            <details>
+              <summary>How do I return an item?</summary>
+              <p>
+                To return an item, visit our Returns page or open a support
+                ticket with your order number and reason for return.
+              </p>
+            </details>
+            <details>
+              <summary>When will I receive my refund?</summary>
+              <p>
+                Refunds are processed within 5–10 business days after we receive
+                the returned item and complete inspection.
+              </p>
+            </details>
+            <details>
+              <summary>
+                I need an invoice for my order. How can I get one?
+              </summary>
+              <p>
+                Please request an invoice via the contact form or email
+                billing@wholemart.com and include your order number.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 WholeMart. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      function handleContactSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const subject = document.getElementById("subject").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name) {
+          alert("Please enter your full name.");
+          return false;
+        }
+        if (!isValidEmail(email)) {
+          alert("Please enter a valid email address.");
+          return false;
+        }
+        if (phone && !isValidPhone(phone)) {
+          alert("Please enter a valid phone number.");
+          return false;
+        }
+
+        const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
+        const mailto = `mailto:support@wholemart.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+        // Open user's mail client as the primary submission mechanism; also show confirmation
+        window.location.href = mailto;
+        setTimeout(
+          () =>
+            alert(
+              "If your mail client did not open, please email support@wholemart.com with your message.",
+            ),
+          800,
+        );
+        return false;
+      }
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        try{
+          const nav = document.querySelector('.navigation');
+          if(!nav) return;
+          const ul = nav.querySelector('ul');
+          // On small screens, ensure navigation and brand are visible for contact page
+          if(window.innerWidth <= 780) {
+            nav.classList.add('open');
+            if(ul){ ul.style.display = 'flex'; ul.style.flexDirection = 'column'; }
+          } else {
+            if(ul) ul.style.display = '';
+          }
+          // Ensure brand name/logo are visible (remove accidental hidden styles)
+          const logoLink = document.querySelector('.logo-link');
+          if(logoLink){ logoLink.style.display = 'flex'; }
+          const brandName = document.querySelector('.brand-name');
+          if(brandName){ brandName.style.display = 'inline-block'; }
+        }catch(e){ console.warn('Header visibility script error', e); }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <meta
+      name="description"
+      content="WholeMart connects farmers, kirana stores, and consumers across India through a smart and efficient digital marketplace."
+    />
+    <meta
+      name="keywords"
+      content="WholeMart, India marketplace, farmers, kirana stores, groceries, ecommerce"
+    />
+    <meta name="author" content="WholeMart" />
+    <meta name="theme-color" content="#00A855" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>WholeMart | Connecting India's Food Future</title>
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header" role="banner">
+      <div class="container header-container">
+        <div class="logo-container">
+          <a href="index.html" class="logo-link">
+            <img
+              src="logo_2.jpeg"
+              alt="WholeMart Logo"
+              class="logo"
+              loading="lazy"
+              width="50"
+              height="50"
+              decoding="async"
+            />
+            <h1 class="brand-name">WholeMart</h1>
+          </a>
+        </div>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          ☰
+        </button>
+
+        <nav class="navigation" id="nav-menu" aria-label="Main Navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button
+            type="button"
+            class="auth-btn"
+            id="auth-btn"
+            onclick="openAuthModal('login')"
+          >
+            Login / Register
+          </button>
+          <button
+            type="button"
+            class="cart-button"
+            onclick="openCart()"
+            aria-label="Open shopping cart"
+          >
+            🛒 <span id="cart-count" aria-live="polite">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main role="main">
+      <section id="home" class="hero">
+        <div class="container hero-grid">
+          <div>
+            <h2>WholeMart — Supply Simplified for Businesses</h2>
+            <p class="muted">
+              A single platform connecting restaurants, kirana stores and
+              institutional buyers to reliable wholesale suppliers with credit,
+              bulk pricing and faster delivery.
+            </p>
+            <div class="hero-ctas">
+              <a href="marketplace.html" class="btn primary-btn"
+                >Explore Marketplace</a
+              >
+              <button
+                class="btn secondary-btn"
+                onclick="openAuthModal('login')"
+              >
+                Get Started
+              </button>
+            </div>
+            <div class="features" style="margin-top: 28px">
+              <div class="feature">
+                <h4>Reliable Sourcing</h4>
+                <p class="muted">
+                  Consistent supply from verified wholesalers.
+                </p>
+              </div>
+              <div class="feature">
+                <h4>Credit & Trials</h4>
+                <p class="muted">
+                  Trial offers and short-term credit to onboard businesses.
+                </p>
+              </div>
+              <div class="feature">
+                <h4>Logistics</h4>
+                <p class="muted">Fast deliveries optimized for bulk buyers.</p>
+              </div>
+            </div>
+          </div>
+          <div class="market-card">
+            <div style="position: relative">
+              <span class="animated-badge">New — Trial Credit</span>
+              <h3 class="text-center">Start a Purchase</h3>
+              <p class="muted text-center">
+                Sign up to get credit limits, special pricing and priority
+                delivery.
+              </p>
+              <img
+                class="hero-gif"
+                src="https://media.giphy.com/media/mGo8dkPOF6GLm/giphy.gif"
+                alt="Handshake between a farmer and a businessman"
+                loading="lazy"
+                decoding="async"
+              />
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  margin-top: 12px;
+                  justify-content: center;
+                "
+              >
+                <button class="primary-btn" onclick="openAuthModal('register')">
+                  Create Account
+                </button>
+                <a href="marketplace.html" class="secondary-btn"
+                  >Browse Products</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WE OFFER SECTION -->
+      <section id="offers" class="we-offer-section">
+        <div class="container">
+          <div class="offer-hero">
+            <h2 class="section-title">We Offer:</h2>
+            <div class="offer-grid">
+              <div class="offer-card">
+                <div class="offer-icon">📦</div>
+                <h3>Bulk Contracts</h3>
+                <p>
+                  Secure wholesale pricing on large volume orders with
+                  guaranteed supply consistency and reliability.
+                </p>
+              </div>
+              <div class="offer-card">
+                <div class="offer-icon">💰</div>
+                <h3>Fair Pricing</h3>
+                <p>
+                  Transparent, competitive rates without hidden charges. Get the
+                  best value for your business needs.
+                </p>
+              </div>
+              <div class="offer-card">
+                <div class="offer-icon">📈</div>
+                <h3>Predictable Demand</h3>
+                <p>
+                  Reliable forecasting and steady supply chains that help you
+                  plan inventory with confidence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IMPACT SECTION -->
+      <section id="impact" class="impact-section">
+        <div class="container">
+          <div class="impact-content">
+            <div class="impact-text">
+              <h2>Building Trust, Creating Opportunities</h2>
+              <div class="impact-benefits">
+                <div class="benefit-item">
+                  <span class="benefit-icon">👨‍🌾</span>
+                  <div>
+                    <h4>Farmers Grow With Confidence</h4>
+                    <p>
+                      Direct access to reliable buyers ensures consistent income
+                      and sustainable growth for agricultural communities.
+                    </p>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">👩</span>
+                  <div>
+                    <h4>Women Earn With Dignity</h4>
+                    <p>
+                      Fair wages, transparent transactions, and respect for all
+                      participants—building economic empowerment for women.
+                    </p>
+                  </div>
+                </div>
+                <div class="benefit-item">
+                  <span class="benefit-icon">🏢</span>
+                  <div>
+                    <h4>Businesses Operate Smoothly</h4>
+                    <p>
+                      Streamlined processes, reduced complexity, and optimized
+                      logistics for efficient business operations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="impact-visual">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=600&fit=crop"
+                alt="Business growth and collaboration"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVENUE MODEL SECTION -->
+      <section id="revenue" class="revenue-section">
+        <div class="container">
+          <h2 class="section-title">Revenue Comes From:</h2>
+          <div class="revenue-grid">
+            <div class="revenue-card">
+              <div class="revenue-icon">📊</div>
+              <h3>Margins on Bulk FMCG Sales</h3>
+              <p>
+                Earn sustainable revenue through competitive margins on
+                Fast-Moving Consumer Goods (FMCG) bulk transactions across our
+                platform.
+              </p>
+            </div>
+            <div class="revenue-card">
+              <div class="revenue-icon">🔄</div>
+              <h3>Future Subscriptions</h3>
+              <p>
+                Premium subscription plans offering priority access, advanced
+                analytics, and exclusive deals for committed partners.
+              </p>
+            </div>
+            <div class="revenue-card">
+              <div class="revenue-icon">🏷️</div>
+              <h3>Private-Label Products</h3>
+              <p>
+                White-label and private-label product offerings generating
+                higher margins while building brand loyalty.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEM SECTION -->
+      <section id="problem" class="section">
+        <div class="container">
+          <div class="section-header">What we solve ?</div>
+          <div class="info-grid">
+            <div class="card">
+              <ul>
+                <li>
+                  Inconsistent supply and variable pricing from wholesalers
+                </li>
+                <li>
+                  Lack of credit purchase options and delayed delivery times
+                </li>
+                <li>
+                  Difficulty contacting multiple suppliers and managing orders
+                </li>
+                <li>
+                  These inefficiencies raise operating costs and reduce margins
+                </li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Impact</h4>
+              <p class="muted">
+                Restaurants, cloud kitchens and institutional buyers lose time
+                and margin due to fragmented suppliers and unreliable logistics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- CART MODAL -->
+    <div
+      id="cart-modal"
+      class="cart-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="cart-title"
+    >
+      <div class="cart-content">
+        <h3 id="cart-title">Your Cart</h3>
+        <button
+          type="button"
+          class="close-btn"
+          onclick="closeCart()"
+          aria-label="Close cart"
+        >
+          ✕
+        </button>
+        <div id="cart-items" role="region" aria-live="polite"></div>
+        <div class="cart-actions">
+          <button type="button" onclick="checkout()" class="primary-btn">
+            Buy Now
+          </button>
+          <button type="button" onclick="closeCart()" class="secondary-btn">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH MODAL -->
+    <div id="auth-modal" class="cart-modal" aria-hidden="true">
+      <div class="cart-content">
+        <h3 id="auth-title">Login</h3>
+        <button type="button" class="close-btn" onclick="closeAuthModal()">
+          ✕
+        </button>
+        <div id="auth-forms">
+          <div id="login-form">
+            <label>Email</label>
+            <input
+              type="email"
+              id="login-email"
+              placeholder="you@company.com"
+            />
+            <label>Password</label>
+            <input type="password" id="login-pass" placeholder="password" />
+            <div style="margin-top: 12px; display: flex; gap: 8px">
+              <button class="primary-btn" onclick="loginUser()">Login</button>
+              <button class="secondary-btn" onclick="showRegister()">
+                Create account
+              </button>
+            </div>
+          </div>
+          <div id="register-form" style="display: none">
+            <label>Name</label>
+            <input type="text" id="reg-name" placeholder="Your name" />
+            <label>Email</label>
+            <input type="email" id="reg-email" placeholder="you@company.com" />
+            <label>Password</label>
+            <input type="password" id="reg-pass" placeholder="password" />
+            <div style="margin-top: 12px; display: flex; gap: 8px">
+              <button class="primary-btn" onclick="registerUser()">
+                Register
+              </button>
+              <button class="secondary-btn" onclick="showLogin()">
+                Back to login
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <p>© 2026 WholeMart. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
